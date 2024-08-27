@@ -24,7 +24,7 @@
                         <h4 class="text-xl font-medium text-gray-900">{{ $iphone->name }}</h4>
                         <p class="text-gray-500">{{ $iphone->specification }}</p>
                         <p class="text-blue-600 font-semibold mt-4">Rp {{ number_format($iphone->price, 0, ',', '.') }}</p>
-                        <button 
+                        <button onclick="showiPhoneDetails({{ $iphone->id }})"
                             class="mt-4 inline-block bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">Detail</button>
                     </div>
                 @endforeach
@@ -32,6 +32,53 @@
         </div>
     </section>
      <!-- product Apple section -->
+
+     <!-- Modal Background -->
+    <div id="phoneModal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-gray-800 bg-opacity-75">
+        <div class="bg-white rounded-lg shadow-lg max-w-md w-full">
+            <!-- Modal Content -->
+            <div class="p-6 overflow-y-auto h-96 w-96">
+                <h3 id="modalPhoneName" class="text-xl font-semibold text-gray-900 mb-4"></h3>
+                <img id="modalPhoneImage" src="" alt="" class="h-64 w-64 object-cover object-center mb-6">
+                <p id="modalPhonePrice" class="text-blue-600 font-semibold text-lg"></p>
+                <p id="modalPhoneSpecification" class="text-gray-700 mb-4"></p>
+                <p id="modalPhoneOS" class="text-gray-500 mb-4"></p>
+                <p id="modalPhoneDescription" class="text-gray-500"></p>
+            </div>
+            <!-- Close Button -->
+            <div class="p-4 border-t border-gray-200 text-right">
+                <button id="closeModal"
+                    class="bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+       <!-- JavaScript -->
+    <script>
+        function showiPhoneDetails(iphoneId) {
+            // Data dari PHP di-pass ke JS (bisa juga menggunakan AJAX)
+            const iphones = @json($iphones);
+
+            // Temukan data phone berdasarkan ID
+            const iphone = iphones.find(p => p.id === iphoneId);
+
+            // Update isi modal dengan data phone
+            document.getElementById('modalPhonePrice').textContent = `Rp ${new Intl.NumberFormat('id-ID').format(iphone.price)}`;
+            document.getElementById('modalPhoneName').textContent = iphone.name;
+            document.getElementById('modalPhoneSpecification').textContent = iphone.specification;
+            document.getElementById('modalPhoneDescription').textContent = iphone.description;
+            document.getElementById('modalPhoneImage').src = `{{ asset('storage') }}/${iphone.image}`;
+            document.getElementById('modalPhoneImage').alt = iphone.name;
+
+            // Tampilkan modal
+            document.getElementById('phoneModal').classList.remove('hidden');
+        }
+
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', function () {
+            document.getElementById('phoneModal').classList.add('hidden');
+        });
+</script>
     
 </body>
 </html>
