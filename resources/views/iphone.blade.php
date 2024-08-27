@@ -79,6 +79,6 @@
             document.getElementById('phoneModal').classList.add('hidden');
         });
 </script>
-    
+    @include('footer')
 </body>
 </html>
