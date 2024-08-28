@@ -2,22 +2,22 @@
 
 namespace App\Filament\Resources;
 
-use App\Models\Sim;
+use App\Filament\Resources\AksesorisResource\Pages;
+use App\Filament\Resources\AksesorisResource\RelationManagers;
+use App\Models\Aksesoris;
 use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use App\Filament\Resources\SimResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use App\Filament\Resources\SimResource\RelationManagers;
 
-class SimResource extends Resource
+class AksesorisResource extends Resource
 {
-    protected static ?string $model = Sim::class;
+    protected static ?string $model = Aksesoris::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -28,7 +28,7 @@ class SimResource extends Resource
                 //
                 TextInput::make('name'),
                 TextInput::make('price'),
-                FileUpload::make('image')->disk('public'),
+                FileUpload::make('image')->disk('public')->image(),
             ]);
     }
 
@@ -46,7 +46,6 @@ class SimResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -65,9 +64,9 @@ class SimResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListSims::route('/'),
-            'create' => Pages\CreateSim::route('/create'),
-            'edit' => Pages\EditSim::route('/{record}/edit'),
+            'index' => Pages\ListAksesoris::route('/'),
+            'create' => Pages\CreateAksesoris::route('/create'),
+            'edit' => Pages\EditAksesoris::route('/{record}/edit'),
         ];
     }
 }

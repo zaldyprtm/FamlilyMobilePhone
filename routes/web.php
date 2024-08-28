@@ -5,6 +5,7 @@ use App\Http\Controllers\SimController;
 use App\Http\Controllers\IphoneController;
 use App\Http\Controllers\PhonesController;
 use App\Http\Controllers\AndroidController;
+use App\Http\Controllers\AksesorisController;
 
 
 /*
@@ -35,8 +36,15 @@ Route::get('/androids', [AndroidController::class, 'index']);
 Route::get('/products', function () {
     return view('products');
 });
+
+// iPhone
 Route::get('/iphones', function () {
     return view('iphones');
 });
-
 Route::get('/iphones', [IphoneController::class, 'index']);
+
+// Aksesoris
+Route::get('/aksesoris', function () {
+    return view('aksesoris');
+});
+Route::get('/aksesoris' , [AksesorisController::class, 'index']);

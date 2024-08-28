@@ -25,7 +25,7 @@
     <!-- Hero Section -->
     <header class="bg-white">
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-extrabold text-gray-900">Temukan iPhone Impianmu di Outlet Kami</h2>
+            <h2 class="text-3xl font-extrabold text-gray-900">Temukan Smartphone Impianmu di <span class="text-sky-500">Family Mobile</span></h2>
             <p class="mt-4 text-lg text-gray-500">Kami menawarkan berbagai model iPhone terbaru dengan harga terbaik.
                 Kunjungi konter kami untuk mendapatkan penawaran khusus!</p>
         </div>

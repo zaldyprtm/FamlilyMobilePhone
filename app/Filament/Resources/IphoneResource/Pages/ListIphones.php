@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\IphoneResource\Pages;
 
-use App\Filament\Resources\IphoneResource;
 use Filament\Actions;
+use App\Exports\IPhoneExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Resources\IphoneResource;
 
 class ListIphones extends ListRecords
 {
@@ -14,6 +16,15 @@ class ListIphones extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+            Actions\Action::make('export')
+            ->label('Export to excel')
+            ->action('export')
+            ->color('success')
         ];
+    }
+
+    public function export()
+    {
+        return Excel::download(new IPhoneExport, 'iphone.xlsx');
     }
 }

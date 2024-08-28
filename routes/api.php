@@ -22,3 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/sims', [\App\Http\Controllers\SimController::class, 'index']);
 Route::get('/androids', [\App\Http\Controllers\AndroidController::class, 'index']);
 Route::get('/iphones', [\App\Http\Controllers\IphoneController::class, 'index']);
+Route::get('/aksesoris', [\App\Http\Controllers\AksesorisController::class, 'index']);

@@ -17,6 +17,7 @@
             @foreach ($sims as $sim)
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                     <div class="p-6">
+                        <img src="{{ asset('storage/' . $sim->image) }}" alt="{{ $sim->name }}" >
                         <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ $sim->name }}</h2>
                         <p class="text-gray-600 mb-4">{{ $sim->description }}</p>
                         <p class="text-blue-600 font-semibold">Rp {{ number_format($sim->price, 0, ',', '.') }}</p>
