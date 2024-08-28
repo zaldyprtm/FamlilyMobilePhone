@@ -48,3 +48,7 @@ Route::get('/aksesoris', function () {
     return view('aksesoris');
 });
 Route::get('/aksesoris' , [AksesorisController::class, 'index']);
+
+Route::get('/kontak', function () {
+    return view('kontak');
+});
